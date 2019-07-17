@@ -1,0 +1,22 @@
+pkg: aws-fuzzer-VFS
+dest: "github/repo/aws-fuzzer-VFS/"
+
+fmt: false
+
+compression:
+  compress: false
+  method: ""
+  keep: false
+
+clean: false
+output: "ab0x.go"
+unexporTed: false
+spread: false
+debug: false
+
+custom:
+  - files:
+    - "./fzf"
+
+    base: "./"
+    prefix: "bin/"
