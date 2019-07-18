@@ -1,5 +1,5 @@
-pkg: aws-fuzzer-VFS
-dest: "github/repo/aws-fuzzer-VFS/"
+pkg: AwsFuzzerVFS
+dest: "AwsFuzzerVFS/"
 
 fmt: false
 
