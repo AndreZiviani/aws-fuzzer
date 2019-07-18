@@ -1,7 +1,6 @@
 package Awsfuzzer
 
 import (
-	"bytes"
 	"fmt"
 	"os"
 	"text/template"
@@ -36,7 +35,6 @@ func New() (*Awsfuzzer, error) {
 
 	return &Awsfuzzer{
 		ec2:      ec2.New(sess),
-		fzfInput: new(bytes.Buffer),
 		options:  options,
 		template: tmpl,
 	}, nil
