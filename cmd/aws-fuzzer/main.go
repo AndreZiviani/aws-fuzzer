@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/andreziviani/aws-fuzzer"
+	"github.com/AndreZiviani/aws-fuzzer"
 )
 
 func main() {

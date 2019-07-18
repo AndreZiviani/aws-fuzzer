@@ -1,4 +1,4 @@
-package awsfuzzer
+package Awsfuzzer
 
 import (
 	"bytes"
