@@ -24,7 +24,7 @@ func ParseOptions() (Options, error) {
 		Template:     `{{index .Tags "Name"}}`,
 	}
 
-	path, err := homedir.Expand("~/.config/ec2-fzf")
+	path, err := homedir.Expand("~/.config/aws-fuzzer")
 	if err != nil {
 		return Options{}, err
 	}
@@ -33,13 +33,13 @@ func ParseOptions() (Options, error) {
 	region := kingpin.Flag("region", "The AWS region").Default(options.Region).String()
 	usePrivateIp := kingpin.Flag("private", "return the private IP address of the instance rather than the public dns").Default(strconv.FormatBool(options.UsePrivateIp)).Bool()
 	template := kingpin.Flag("template", "Template").Default(options.Template).String()
-	version := kingpin.Flag("version", "Show the version of ec2-fzf").Default("false").Bool()
+	version := kingpin.Flag("version", "Show the version of aws-fuzzer").Default("false").Bool()
 	filters := kingpin.Flag("filters", "Ec2 describe-instance filters").Strings()
 
 	kingpin.Parse()
 
 	if *version {
-		fmt.Printf("Ec2-fzf version %s\n", VERSION)
+		fmt.Printf("Ec2-fzf version %s\n", "1.0")
 		os.Exit(1)
 	}
 

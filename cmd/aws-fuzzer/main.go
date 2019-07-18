@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fzf, err := ec2fzf.New()
+	fzf, err := Awsfuzzer.New()
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
