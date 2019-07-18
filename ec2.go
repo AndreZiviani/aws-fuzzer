@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
-func ListInstances(filter) ([]*ec2.Instance, error) {
+func (e *Awsfuzzer) ListInstances() ([]*ec2.Instance, error) {
 	instances := make([]*ec2.Instance, 0, 0)
 	filters := make([]*ec2.Filter, 0, 0)
 
@@ -18,22 +18,22 @@ func ListInstances(filter) ([]*ec2.Instance, error) {
 		Values: []*string{aws.String("pending"), aws.String("running"), aws.String("shutting-down")},
 	})
 
-	//	for _, filter := range e.options.Filters {
-	//		split := strings.SplitN(filter, "=", 2)
-	//		if len(split) < 2 {
-	//			return nil, fmt.Errorf("Filters can only contain one '='. Filter \"%s\" has %d", filter, len(split))
-	//		}
-	//
-	//		filters = append(filters, &ec2.Filter{
-	//			Name:   aws.String(split[0]),
-	//			Values: []*string{aws.String(split[1])},
-	//		})
-	//	}
+	for _, filter := range e.options.Filters {
+		split := strings.SplitN(filter, "=", 2)
+		if len(split) < 2 {
+			return nil, fmt.Errorf("Filters can only contain one '='. Filter \"%s\" has %d", filter, len(split))
+		}
+
+		filters = append(filters, &ec2.Filter{
+			Name:   aws.String(split[0]),
+			Values: []*string{aws.String(split[1])},
+		})
+	}
 	params := &ec2.DescribeInstancesInput{}
 
-	//	if len(filters) > 0 {
-	//		params.Filters = filters
-	//	}
+	if len(filters) > 0 {
+		params.Filters = filters
+	}
 
 	err := e.ec2.DescribeInstancesPages(
 		params,
